@@ -107,6 +107,125 @@ class TimeSeriesDataset(Dataset):
             normalized_data = normalized_data.cpu().numpy()
             
         return (normalized_data * self.stds[None, None, :]) + self.means[None, None, :]
+    
+import matplotlib.pyplot as plt
+import numpy as np
+
+def plot_sample_forecasts(model, test_loader, test_dataset, num_samples=3, save_dir='results'):
+    """
+    Plot sample forecasts from the model comparing against actual values
+    
+    Args:
+        model: Trained HYDRA model
+        test_loader: DataLoader for test data
+        test_dataset: TimeSeriesDataset instance for denormalization
+        num_samples: Number of sample forecasts to plot
+        save_dir: Directory to save plots
+    """
+    model.eval()
+    plt.style.use('seaborn')
+    
+    # Create directory if it doesn't exist
+    save_dir = Path(save_dir)
+    save_dir.mkdir(exist_ok=True)
+    
+    with torch.no_grad():
+        # Get a batch of data
+        x, y = next(iter(test_loader))
+        x, y = x.to(next(model.parameters()).device), y.to(next(model.parameters()).device)
+        
+        # Generate predictions
+        output = model(x, y.size(1))
+        predictions = output['prediction']
+        
+        # Convert to original scale
+        x_orig = test_dataset.inverse_transform(x)
+        y_orig = test_dataset.inverse_transform(y)
+        pred_orig = test_dataset.inverse_transform(predictions)
+        
+        # Plot samples
+        for sample_idx in range(min(num_samples, x.size(0))):
+            # Create figure with subplots for each feature
+            fig, axes = plt.subplots(output['prediction'].size(-1), 1, 
+                                   figsize=(15, 5*output['prediction'].size(-1)),
+                                   sharex=True)
+            if output['prediction'].size(-1) == 1:
+                axes = [axes]
+            
+            # Time points for x-axis
+            history_time = np.arange(x.size(1))
+            future_time = np.arange(x.size(1), x.size(1) + y.size(1))
+            
+            for feature_idx, ax in enumerate(axes):
+                # Plot historical data
+                ax.plot(history_time, x_orig[sample_idx, :, feature_idx], 
+                       label='Historical', color='blue')
+                
+                # Plot actual future values
+                ax.plot(future_time, y_orig[sample_idx, :, feature_idx], 
+                       label='Actual', color='green')
+                
+                # Plot prediction
+                ax.plot(future_time, pred_orig[sample_idx, :, feature_idx], 
+                       label='Prediction', color='red', linestyle='--')
+                
+                # Add confidence intervals if using distribution
+                weights = output['weights'][sample_idx, :, feature_idx].cpu()
+                locs = output['locs'][sample_idx, :, feature_idx].cpu()
+                scales = output['scales'][sample_idx, :, feature_idx].cpu()
+                
+                # Generate samples from the distribution
+                mix = Categorical(weights)
+                comp = StudentT(
+                    output['dfs'][sample_idx, :, feature_idx].cpu(),
+                    locs,
+                    scales
+                )
+                gmm = MixtureSameFamily(mix, comp)
+                samples = gmm.sample((100,)).numpy()
+                
+                # Calculate percentiles for confidence intervals
+                lower = np.percentile(samples, 5, axis=0)
+                upper = np.percentile(samples, 95, axis=0)
+                
+                # Convert confidence intervals to original scale
+                lower = test_dataset.inverse_transform(
+                    torch.tensor(lower).unsqueeze(0).unsqueeze(-1)
+                )[0, :, 0]
+                upper = test_dataset.inverse_transform(
+                    torch.tensor(upper).unsqueeze(0).unsqueeze(-1)
+                )[0, :, 0]
+                
+                # Plot confidence intervals
+                ax.fill_between(future_time, lower, upper, 
+                              color='red', alpha=0.2, label='90% Confidence Interval')
+                
+                ax.set_title(f'Feature {feature_idx + 1}')
+                ax.legend()
+                ax.grid(True)
+            
+            plt.xlabel('Time Step')
+            plt.tight_layout()
+            
+            # Save the plot
+            plt.savefig(save_dir / f'forecast_sample_{sample_idx + 1}.png')
+            plt.close()
+
+def plot_training_history(train_losses, val_losses, save_dir='results'):
+    """
+    Plot training and validation losses
+    """
+    plt.figure(figsize=(10, 6))
+    plt.plot(train_losses, label='Train Loss')
+    plt.plot(val_losses, label='Validation Loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.title('Training History')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(Path(save_dir) / 'training_history.png')
+    plt.close()
 
 def main():
     # Set up logging
@@ -235,6 +354,11 @@ def main():
         device=config['device'],
         checkpoint_dir='checkpoints/synthetic'
     )
+
+    # After training, generate and save plots
+    logger.info("Generating forecast plots...")
+    plot_sample_forecasts(model, test_loader, test_dataset, num_samples=5)
+    logger.info("Plots saved in results directory")
     
     # Evaluate model
     logger.info("Evaluating model...")
@@ -298,6 +422,10 @@ def train_hydra(
     best_val_loss = float('inf')
     step = 0
     
+    # Track losses for plotting
+    epoch_train_losses = []
+    epoch_val_losses = []
+    
     # Calculate total steps for progress reporting
     total_steps = len(train_loader)
     
@@ -323,7 +451,6 @@ def train_hydra(
             train_losses.append(loss.item())
             step += 1
             
-            # Print progress every 10% of epoch or at least every 50 batches
             if batch_idx % max(total_steps // 10, 50) == 0:
                 elapsed = time.time() - epoch_start_time
                 progress = (batch_idx + 1) / total_steps
@@ -352,6 +479,11 @@ def train_hydra(
         
         avg_train_loss = np.mean(train_losses)
         avg_val_loss = np.mean(val_losses)
+        
+        # Store losses for plotting
+        epoch_train_losses.append(avg_train_loss)
+        epoch_val_losses.append(avg_val_loss)
+        
         epoch_time = time.time() - epoch_start_time
         
         logger.info(
@@ -371,6 +503,10 @@ def train_hydra(
                 'val_loss': best_val_loss,
             }, checkpoint_path)
             logger.info(f'Saved best model checkpoint to {checkpoint_path}')
+        
+        # Plot training history every few epochs
+        if (epoch + 1) % 5 == 0:
+            plot_training_history(epoch_train_losses, epoch_val_losses)
     
     return model
 
