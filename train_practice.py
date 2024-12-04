@@ -4,6 +4,7 @@ import pandas as pd
 from torch.utils.data import Dataset, DataLoader
 from torch.optim import AdamW
 from torch.optim.lr_scheduler import LinearLR
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 import logging
 from pathlib import Path
 import math
@@ -123,7 +124,6 @@ def plot_sample_forecasts(model, test_loader, test_dataset, num_samples=3, save_
         save_dir: Directory to save plots
     """
     model.eval()
-    plt.style.use('seaborn')
     
     # Create directory if it doesn't exist
     save_dir = Path(save_dir)
@@ -233,7 +233,7 @@ def main():
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler('hydra_synthetic_training.log'),
+            logging.FileHandler('hydra_synthetic_training2.log'),
             logging.StreamHandler()
         ]
     )
@@ -250,13 +250,13 @@ def main():
         'pred_length': 24,
         'num_features': 3,
         'batch_size': 128,
-        'd_model': 256,
-        'nhead': 4,
-        'num_encoder_layers': 4,
-        'num_decoder_layers': 2,
-        'num_dist_components': 3,
-        'learning_rate': 1e-5,
-        'warmup_steps': 5000,
+        'd_model': 128,
+        'nhead': 2,
+        'num_encoder_layers': 2,
+        'num_decoder_layers': 1,
+        'num_dist_components': 2,
+        'learning_rate': 1e-3,
+        'warmup_steps': 1000,
         'num_epochs': 50,
         'stride': 4,  # Add stride parameter to reduce dataset size
         'device': 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -355,6 +355,10 @@ def main():
         checkpoint_dir='checkpoints/synthetic'
     )
 
+    # # Load the saved state dict
+    # checkpoint = torch.load('checkpoints/synthetic/hydra_best.pt')
+    # model.load_state_dict(checkpoint['model_state_dict'])
+
     # After training, generate and save plots
     logger.info("Generating forecast plots...")
     plot_sample_forecasts(model, test_loader, test_dataset, num_samples=5)
@@ -408,7 +412,11 @@ def train_hydra(
     device='cuda',
     checkpoint_dir='checkpoints'
 ):
-    optimizer = AdamW(model.parameters(), lr=learning_rate)
+    optimizer = AdamW(
+        model.parameters(),
+        lr=learning_rate,
+        weight_decay=0.01
+    )
     scheduler = LinearLR(
         optimizer,
         start_factor=0.1,
@@ -442,7 +450,7 @@ def train_hydra(
             loss, loss_components = model.compute_loss(output, y)
             
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 0.5)
             optimizer.step()
             
             if step < warmup_steps:

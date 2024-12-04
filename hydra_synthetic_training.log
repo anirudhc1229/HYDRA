@@ -1,0 +1,300 @@
+2024-12-02 21:37:31,142 - INFO - Generating synthetic data...
+2024-12-02 21:37:31,164 - INFO - Data shapes - Train: (100, 700, 3), Val: (100, 150, 3), Test: (100, 150, 3)
+2024-12-02 21:37:31,310 - INFO - Starting training...
+2024-12-02 21:38:04,474 - INFO - Generating synthetic data...
+2024-12-02 21:38:04,494 - INFO - Data shapes - Train: (100, 700, 3), Val: (100, 150, 3), Test: (100, 150, 3)
+2024-12-02 21:38:04,618 - INFO - Starting training...
+2024-12-02 21:38:11,644 - INFO - Epoch 0, Progress: 0.9%, Batch 0/114, Loss: 3.5090, Point Loss: 1.1711, Dist Loss: 1.5982, Uncert Loss: 0.7396, ETA: 742s
+2024-12-02 21:41:48,237 - INFO - Epoch 0, Progress: 44.7%, Batch 50/114, Loss: 3.3585, Point Loss: 1.1308, Dist Loss: 1.5342, Uncert Loss: 0.6935, ETA: 276s
+2024-12-02 21:45:32,384 - INFO - Epoch 0, Progress: 88.6%, Batch 100/114, Loss: 3.2518, Point Loss: 1.0717, Dist Loss: 1.4994, Uncert Loss: 0.6808, ETA: 58s
+2024-12-02 21:46:41,390 - INFO - Epoch 0 completed in 516s, Train Loss: 3.3396, Val Loss: 3.0574
+2024-12-02 21:46:41,540 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-02 21:46:48,431 - INFO - Epoch 1, Progress: 0.9%, Batch 0/114, Loss: 3.1970, Point Loss: 1.0538, Dist Loss: 1.4637, Uncert Loss: 0.6795, ETA: 779s
+2024-12-02 21:50:54,843 - INFO - Epoch 1, Progress: 44.7%, Batch 50/114, Loss: 3.2044, Point Loss: 1.0469, Dist Loss: 1.4842, Uncert Loss: 0.6733, ETA: 313s
+2024-12-02 21:54:53,092 - INFO - Epoch 1, Progress: 88.6%, Batch 100/114, Loss: 3.0504, Point Loss: 0.9395, Dist Loss: 1.4301, Uncert Loss: 0.6809, ETA: 63s
+2024-12-02 21:56:04,948 - INFO - Epoch 1 completed in 563s, Train Loss: 3.2107, Val Loss: 3.0305
+2024-12-02 21:56:05,049 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-02 21:56:12,870 - INFO - Epoch 2, Progress: 0.9%, Batch 0/114, Loss: 3.2532, Point Loss: 1.0895, Dist Loss: 1.4930, Uncert Loss: 0.6707, ETA: 884s
+2024-12-02 22:10:20,038 - INFO - Epoch 2, Progress: 44.7%, Batch 50/114, Loss: 3.2434, Point Loss: 1.0767, Dist Loss: 1.4934, Uncert Loss: 0.6734, ETA: 1056s
+2024-12-02 22:27:49,586 - INFO - Epoch 2, Progress: 88.6%, Batch 100/114, Loss: 3.2844, Point Loss: 1.1150, Dist Loss: 1.4967, Uncert Loss: 0.6727, ETA: 245s
+2024-12-02 22:28:52,186 - INFO - Epoch 2 completed in 1967s, Train Loss: 3.1865, Val Loss: 3.0090
+2024-12-02 22:28:52,283 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-02 22:28:58,614 - INFO - Epoch 3, Progress: 0.9%, Batch 0/114, Loss: 3.0980, Point Loss: 0.9832, Dist Loss: 1.4495, Uncert Loss: 0.6653, ETA: 715s
+2024-12-02 22:34:14,032 - INFO - Epoch 3, Progress: 44.7%, Batch 50/114, Loss: 3.1108, Point Loss: 0.9864, Dist Loss: 1.4504, Uncert Loss: 0.6740, ETA: 397s
+2024-12-02 22:38:06,830 - INFO - Epoch 3, Progress: 88.6%, Batch 100/114, Loss: 3.0000, Point Loss: 0.9196, Dist Loss: 1.4173, Uncert Loss: 0.6631, ETA: 71s
+2024-12-02 22:39:17,884 - INFO - Epoch 3 completed in 626s, Train Loss: 3.1638, Val Loss: 2.9894
+2024-12-02 22:39:17,976 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-02 22:39:24,977 - INFO - Epoch 4, Progress: 0.9%, Batch 0/114, Loss: 3.1488, Point Loss: 1.0173, Dist Loss: 1.4642, Uncert Loss: 0.6673, ETA: 791s
+2024-12-02 22:54:48,534 - INFO - Epoch 4, Progress: 44.7%, Batch 50/114, Loss: 3.0628, Point Loss: 0.9566, Dist Loss: 1.4275, Uncert Loss: 0.6787, ETA: 1150s
+2024-12-02 22:58:27,017 - INFO - Epoch 4, Progress: 88.6%, Batch 100/114, Loss: 3.0577, Point Loss: 0.9769, Dist Loss: 1.4387, Uncert Loss: 0.6421, ETA: 148s
+2024-12-02 22:59:28,093 - INFO - Epoch 4 completed in 1210s, Train Loss: 3.1339, Val Loss: 2.9605
+2024-12-02 22:59:28,229 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 11:34:49,081 - INFO - Generating synthetic data...
+2024-12-03 11:34:49,104 - INFO - Data shapes - Train: (100, 700, 3), Val: (100, 150, 3), Test: (100, 150, 3)
+2024-12-03 11:34:49,247 - INFO - Starting training...
+2024-12-03 11:34:56,036 - INFO - Epoch 0, Progress: 0.9%, Batch 0/114, Loss: 3.5090, Point Loss: 1.1711, Dist Loss: 1.5982, Uncert Loss: 0.7396, ETA: 712s
+2024-12-03 11:43:07,575 - INFO - Epoch 0, Progress: 44.7%, Batch 50/114, Loss: 3.3585, Point Loss: 1.1308, Dist Loss: 1.5342, Uncert Loss: 0.6935, ETA: 615s
+2024-12-03 11:48:23,297 - INFO - Epoch 0, Progress: 88.6%, Batch 100/114, Loss: 3.2518, Point Loss: 1.0717, Dist Loss: 1.4994, Uncert Loss: 0.6808, ETA: 105s
+2024-12-03 11:49:42,829 - INFO - Epoch 0 completed in 893s, Train Loss: 3.3396, Val Loss: 3.0574
+2024-12-03 11:49:42,925 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 11:49:49,228 - INFO - Epoch 1, Progress: 0.9%, Batch 0/114, Loss: 3.1970, Point Loss: 1.0538, Dist Loss: 1.4637, Uncert Loss: 0.6795, ETA: 712s
+2024-12-03 11:53:27,657 - INFO - Epoch 1, Progress: 44.7%, Batch 50/114, Loss: 3.2044, Point Loss: 1.0469, Dist Loss: 1.4842, Uncert Loss: 0.6733, ETA: 278s
+2024-12-03 11:57:32,786 - INFO - Epoch 1, Progress: 88.6%, Batch 100/114, Loss: 3.0504, Point Loss: 0.9395, Dist Loss: 1.4301, Uncert Loss: 0.6809, ETA: 60s
+2024-12-03 11:58:50,477 - INFO - Epoch 1 completed in 548s, Train Loss: 3.2107, Val Loss: 3.0305
+2024-12-03 11:58:50,591 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 11:58:58,216 - INFO - Epoch 2, Progress: 0.9%, Batch 0/114, Loss: 3.2532, Point Loss: 1.0895, Dist Loss: 1.4930, Uncert Loss: 0.6707, ETA: 862s
+2024-12-03 12:03:09,884 - INFO - Epoch 2, Progress: 44.7%, Batch 50/114, Loss: 3.2434, Point Loss: 1.0767, Dist Loss: 1.4934, Uncert Loss: 0.6734, ETA: 320s
+2024-12-03 12:09:32,309 - INFO - Epoch 2, Progress: 88.6%, Batch 100/114, Loss: 3.2844, Point Loss: 1.1150, Dist Loss: 1.4967, Uncert Loss: 0.6727, ETA: 83s
+2024-12-03 12:11:24,017 - INFO - Epoch 2 completed in 753s, Train Loss: 3.1865, Val Loss: 3.0090
+2024-12-03 12:11:24,121 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 12:12:30,092 - INFO - Epoch 3, Progress: 0.9%, Batch 0/114, Loss: 3.0980, Point Loss: 0.9832, Dist Loss: 1.4495, Uncert Loss: 0.6653, ETA: 7455s
+2024-12-03 12:30:55,659 - INFO - Epoch 3, Progress: 44.7%, Batch 50/114, Loss: 3.1108, Point Loss: 0.9864, Dist Loss: 1.4504, Uncert Loss: 0.6740, ETA: 1447s
+2024-12-03 12:34:30,700 - INFO - Epoch 3, Progress: 88.6%, Batch 100/114, Loss: 3.0000, Point Loss: 0.9196, Dist Loss: 1.4173, Uncert Loss: 0.6631, ETA: 178s
+2024-12-03 12:35:38,078 - INFO - Epoch 3 completed in 1454s, Train Loss: 3.1638, Val Loss: 2.9894
+2024-12-03 12:35:38,171 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 12:35:45,134 - INFO - Epoch 4, Progress: 0.9%, Batch 0/114, Loss: 3.1488, Point Loss: 1.0173, Dist Loss: 1.4642, Uncert Loss: 0.6673, ETA: 787s
+2024-12-03 12:39:59,197 - INFO - Epoch 4, Progress: 44.7%, Batch 50/114, Loss: 3.0628, Point Loss: 0.9566, Dist Loss: 1.4275, Uncert Loss: 0.6787, ETA: 322s
+2024-12-03 12:44:33,123 - INFO - Epoch 4, Progress: 88.6%, Batch 100/114, Loss: 3.0577, Point Loss: 0.9769, Dist Loss: 1.4387, Uncert Loss: 0.6421, ETA: 69s
+2024-12-03 12:45:51,238 - INFO - Epoch 4 completed in 613s, Train Loss: 3.1339, Val Loss: 2.9605
+2024-12-03 12:45:51,334 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 12:45:59,879 - INFO - Epoch 5, Progress: 0.9%, Batch 0/114, Loss: 3.0906, Point Loss: 0.9842, Dist Loss: 1.4408, Uncert Loss: 0.6656, ETA: 889s
+2024-12-03 12:50:10,797 - INFO - Epoch 5, Progress: 44.7%, Batch 50/114, Loss: 3.1527, Point Loss: 1.0319, Dist Loss: 1.4629, Uncert Loss: 0.6579, ETA: 320s
+2024-12-03 12:54:40,922 - INFO - Epoch 5, Progress: 88.6%, Batch 100/114, Loss: 3.1649, Point Loss: 1.0365, Dist Loss: 1.4741, Uncert Loss: 0.6542, ETA: 68s
+2024-12-03 12:55:58,721 - INFO - Epoch 5 completed in 607s, Train Loss: 3.0905, Val Loss: 2.8951
+2024-12-03 12:55:58,816 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 12:56:06,477 - INFO - Epoch 6, Progress: 0.9%, Batch 0/114, Loss: 3.1423, Point Loss: 1.0228, Dist Loss: 1.4668, Uncert Loss: 0.6527, ETA: 866s
+2024-12-03 13:03:29,813 - INFO - Epoch 6, Progress: 44.7%, Batch 50/114, Loss: 3.2214, Point Loss: 1.0898, Dist Loss: 1.4853, Uncert Loss: 0.6463, ETA: 557s
+2024-12-03 13:08:32,585 - INFO - Epoch 6, Progress: 88.6%, Batch 100/114, Loss: 3.1230, Point Loss: 1.0436, Dist Loss: 1.4601, Uncert Loss: 0.6194, ETA: 97s
+2024-12-03 13:09:47,428 - INFO - Epoch 6 completed in 829s, Train Loss: 3.0264, Val Loss: 2.8186
+2024-12-03 13:09:47,523 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 13:09:53,951 - INFO - Epoch 7, Progress: 0.9%, Batch 0/114, Loss: 2.9581, Point Loss: 0.9263, Dist Loss: 1.4052, Uncert Loss: 0.6267, ETA: 726s
+2024-12-03 13:14:01,193 - INFO - Epoch 7, Progress: 44.7%, Batch 50/114, Loss: 3.0346, Point Loss: 0.9632, Dist Loss: 1.4215, Uncert Loss: 0.6499, ETA: 313s
+2024-12-03 13:17:44,627 - INFO - Epoch 7, Progress: 88.6%, Batch 100/114, Loss: 2.8953, Point Loss: 0.8657, Dist Loss: 1.3819, Uncert Loss: 0.6477, ETA: 61s
+2024-12-03 13:20:51,137 - INFO - Epoch 7 completed in 664s, Train Loss: 2.9392, Val Loss: 2.7227
+2024-12-03 13:20:51,231 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 13:20:57,433 - INFO - Epoch 8, Progress: 0.9%, Batch 0/114, Loss: 2.7913, Point Loss: 0.8586, Dist Loss: 1.3452, Uncert Loss: 0.5875, ETA: 701s
+2024-12-03 13:23:50,139 - INFO - Generating synthetic data...
+2024-12-03 13:23:50,163 - INFO - Data shapes - Train: (100, 700, 3), Val: (100, 150, 3), Test: (100, 150, 3)
+2024-12-03 13:23:50,322 - INFO - Starting training...
+2024-12-03 13:23:57,672 - INFO - Epoch 0, Progress: 0.9%, Batch 0/114, Loss: 3.5090, Point Loss: 1.1711, Dist Loss: 1.5982, Uncert Loss: 0.7396, ETA: 777s
+2024-12-03 13:27:30,567 - INFO - Epoch 0, Progress: 44.7%, Batch 50/114, Loss: 3.3585, Point Loss: 1.1308, Dist Loss: 1.5342, Uncert Loss: 0.6935, ETA: 271s
+2024-12-03 13:31:29,738 - INFO - Epoch 0, Progress: 88.6%, Batch 100/114, Loss: 3.2518, Point Loss: 1.0717, Dist Loss: 1.4994, Uncert Loss: 0.6808, ETA: 59s
+2024-12-03 13:32:47,550 - INFO - Epoch 0 completed in 537s, Train Loss: 3.3396, Val Loss: 3.0574
+2024-12-03 13:32:47,649 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 13:32:54,959 - INFO - Epoch 1, Progress: 0.9%, Batch 0/114, Loss: 3.1970, Point Loss: 1.0538, Dist Loss: 1.4637, Uncert Loss: 0.6795, ETA: 826s
+2024-12-03 13:37:17,178 - INFO - Epoch 1, Progress: 44.7%, Batch 50/114, Loss: 3.2044, Point Loss: 1.0469, Dist Loss: 1.4842, Uncert Loss: 0.6733, ETA: 333s
+2024-12-03 13:41:17,085 - INFO - Epoch 1, Progress: 88.6%, Batch 100/114, Loss: 3.0504, Point Loss: 0.9395, Dist Loss: 1.4301, Uncert Loss: 0.6809, ETA: 66s
+2024-12-03 13:42:26,402 - INFO - Epoch 1 completed in 579s, Train Loss: 3.2107, Val Loss: 3.0305
+2024-12-03 13:42:26,496 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 13:42:33,647 - INFO - Epoch 2, Progress: 0.9%, Batch 0/114, Loss: 3.2532, Point Loss: 1.0895, Dist Loss: 1.4930, Uncert Loss: 0.6707, ETA: 808s
+2024-12-03 13:46:40,069 - INFO - Epoch 2, Progress: 44.7%, Batch 50/114, Loss: 3.2434, Point Loss: 1.0767, Dist Loss: 1.4934, Uncert Loss: 0.6734, ETA: 313s
+2024-12-03 13:50:38,937 - INFO - Epoch 2, Progress: 88.6%, Batch 100/114, Loss: 3.2844, Point Loss: 1.1150, Dist Loss: 1.4967, Uncert Loss: 0.6727, ETA: 63s
+2024-12-03 13:51:47,986 - INFO - Epoch 2 completed in 561s, Train Loss: 3.1865, Val Loss: 3.0090
+2024-12-03 13:51:48,082 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 13:51:55,280 - INFO - Epoch 3, Progress: 0.9%, Batch 0/114, Loss: 3.0980, Point Loss: 0.9832, Dist Loss: 1.4495, Uncert Loss: 0.6653, ETA: 813s
+2024-12-03 13:56:11,539 - INFO - Epoch 3, Progress: 44.7%, Batch 50/114, Loss: 3.1108, Point Loss: 0.9864, Dist Loss: 1.4504, Uncert Loss: 0.6740, ETA: 325s
+2024-12-03 14:00:24,482 - INFO - Epoch 3, Progress: 88.6%, Batch 100/114, Loss: 3.0000, Point Loss: 0.9196, Dist Loss: 1.4173, Uncert Loss: 0.6631, ETA: 66s
+2024-12-03 14:01:31,067 - INFO - Epoch 3 completed in 583s, Train Loss: 3.1638, Val Loss: 2.9894
+2024-12-03 14:01:31,167 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 14:01:38,149 - INFO - Epoch 4, Progress: 0.9%, Batch 0/114, Loss: 3.1488, Point Loss: 1.0173, Dist Loss: 1.4642, Uncert Loss: 0.6673, ETA: 789s
+2024-12-03 14:05:45,816 - INFO - Epoch 4, Progress: 44.7%, Batch 50/114, Loss: 3.0628, Point Loss: 0.9566, Dist Loss: 1.4275, Uncert Loss: 0.6787, ETA: 315s
+2024-12-03 14:09:46,470 - INFO - Epoch 4, Progress: 88.6%, Batch 100/114, Loss: 3.0577, Point Loss: 0.9769, Dist Loss: 1.4387, Uncert Loss: 0.6421, ETA: 64s
+2024-12-03 14:10:57,841 - INFO - Epoch 4 completed in 567s, Train Loss: 3.1339, Val Loss: 2.9605
+2024-12-03 14:10:57,938 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 14:11:05,985 - INFO - Epoch 5, Progress: 0.9%, Batch 0/114, Loss: 3.0906, Point Loss: 0.9842, Dist Loss: 1.4408, Uncert Loss: 0.6656, ETA: 823s
+2024-12-03 14:15:46,648 - INFO - Epoch 5, Progress: 44.7%, Batch 50/114, Loss: 3.1527, Point Loss: 1.0319, Dist Loss: 1.4629, Uncert Loss: 0.6579, ETA: 356s
+2024-12-03 14:20:22,695 - INFO - Epoch 5, Progress: 88.6%, Batch 100/114, Loss: 3.1649, Point Loss: 1.0365, Dist Loss: 1.4741, Uncert Loss: 0.6542, ETA: 73s
+2024-12-03 14:21:40,181 - INFO - Epoch 5 completed in 641s, Train Loss: 3.0905, Val Loss: 2.8951
+2024-12-03 14:21:40,275 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 14:21:47,679 - INFO - Epoch 6, Progress: 0.9%, Batch 0/114, Loss: 3.1423, Point Loss: 1.0228, Dist Loss: 1.4668, Uncert Loss: 0.6527, ETA: 837s
+2024-12-03 14:26:13,707 - INFO - Epoch 6, Progress: 44.7%, Batch 50/114, Loss: 3.2214, Point Loss: 1.0898, Dist Loss: 1.4853, Uncert Loss: 0.6463, ETA: 338s
+2024-12-03 14:31:38,734 - INFO - Epoch 6, Progress: 88.6%, Batch 100/114, Loss: 3.1230, Point Loss: 1.0436, Dist Loss: 1.4601, Uncert Loss: 0.6194, ETA: 77s
+2024-12-03 14:32:44,965 - INFO - Epoch 6 completed in 665s, Train Loss: 3.0264, Val Loss: 2.8186
+2024-12-03 14:32:45,063 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 14:32:51,953 - INFO - Epoch 7, Progress: 0.9%, Batch 0/114, Loss: 2.9581, Point Loss: 0.9263, Dist Loss: 1.4052, Uncert Loss: 0.6267, ETA: 779s
+2024-12-03 14:36:48,400 - INFO - Epoch 7, Progress: 44.7%, Batch 50/114, Loss: 3.0346, Point Loss: 0.9632, Dist Loss: 1.4215, Uncert Loss: 0.6499, ETA: 301s
+2024-12-03 14:40:49,317 - INFO - Epoch 7, Progress: 88.6%, Batch 100/114, Loss: 2.8953, Point Loss: 0.8657, Dist Loss: 1.3819, Uncert Loss: 0.6477, ETA: 62s
+2024-12-03 14:41:55,910 - INFO - Epoch 7 completed in 551s, Train Loss: 2.9392, Val Loss: 2.7227
+2024-12-03 14:41:56,004 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 14:42:02,901 - INFO - Epoch 8, Progress: 0.9%, Batch 0/114, Loss: 2.7913, Point Loss: 0.8586, Dist Loss: 1.3452, Uncert Loss: 0.5875, ETA: 779s
+2024-12-03 14:45:53,343 - INFO - Epoch 8, Progress: 44.7%, Batch 50/114, Loss: 2.8883, Point Loss: 0.8820, Dist Loss: 1.3773, Uncert Loss: 0.6291, ETA: 293s
+2024-12-03 14:49:56,404 - INFO - Epoch 8, Progress: 88.6%, Batch 100/114, Loss: 2.8289, Point Loss: 0.8352, Dist Loss: 1.3488, Uncert Loss: 0.6449, ETA: 62s
+2024-12-03 14:51:12,183 - INFO - Epoch 8 completed in 556s, Train Loss: 2.8482, Val Loss: 2.6551
+2024-12-03 14:51:12,279 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 14:51:19,780 - INFO - Epoch 9, Progress: 0.9%, Batch 0/114, Loss: 2.8354, Point Loss: 0.8436, Dist Loss: 1.3521, Uncert Loss: 0.6396, ETA: 848s
+2024-12-03 14:55:28,455 - INFO - Epoch 9, Progress: 44.7%, Batch 50/114, Loss: 2.7440, Point Loss: 0.8416, Dist Loss: 1.3082, Uncert Loss: 0.5941, ETA: 316s
+2024-12-03 14:59:43,155 - INFO - Epoch 9, Progress: 88.6%, Batch 100/114, Loss: 2.8698, Point Loss: 0.8819, Dist Loss: 1.3325, Uncert Loss: 0.6554, ETA: 66s
+2024-12-03 15:00:57,578 - INFO - Epoch 9 completed in 585s, Train Loss: 2.7702, Val Loss: 2.5789
+2024-12-03 15:00:57,673 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 15:01:06,699 - INFO - Epoch 10, Progress: 0.9%, Batch 0/114, Loss: 2.7402, Point Loss: 0.8122, Dist Loss: 1.3003, Uncert Loss: 0.6276, ETA: 995s
+2024-12-03 15:05:15,782 - INFO - Epoch 10, Progress: 44.7%, Batch 50/114, Loss: 2.7174, Point Loss: 0.8326, Dist Loss: 1.2772, Uncert Loss: 0.6075, ETA: 319s
+2024-12-03 15:09:40,568 - INFO - Epoch 10, Progress: 88.6%, Batch 100/114, Loss: 2.7282, Point Loss: 0.7574, Dist Loss: 1.2946, Uncert Loss: 0.6762, ETA: 67s
+2024-12-03 15:11:01,975 - INFO - Epoch 10 completed in 604s, Train Loss: 2.6988, Val Loss: 2.5093
+2024-12-03 15:11:02,078 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 15:11:10,891 - INFO - Epoch 11, Progress: 0.9%, Batch 0/114, Loss: 2.5028, Point Loss: 0.6755, Dist Loss: 1.2050, Uncert Loss: 0.6223, ETA: 996s
+2024-12-03 15:15:51,475 - INFO - Epoch 11, Progress: 44.7%, Batch 50/114, Loss: 2.6915, Point Loss: 0.8015, Dist Loss: 1.2780, Uncert Loss: 0.6120, ETA: 357s
+2024-12-03 15:20:44,694 - INFO - Epoch 11, Progress: 88.6%, Batch 100/114, Loss: 2.5754, Point Loss: 0.7242, Dist Loss: 1.2260, Uncert Loss: 0.6253, ETA: 75s
+2024-12-03 15:22:05,249 - INFO - Epoch 11 completed in 663s, Train Loss: 2.6346, Val Loss: 2.4425
+2024-12-03 15:22:05,348 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 15:22:13,209 - INFO - Epoch 12, Progress: 0.9%, Batch 0/114, Loss: 2.5463, Point Loss: 0.7331, Dist Loss: 1.2187, Uncert Loss: 0.5946, ETA: 888s
+2024-12-03 15:26:42,904 - INFO - Epoch 12, Progress: 44.7%, Batch 50/114, Loss: 2.5704, Point Loss: 0.7380, Dist Loss: 1.2172, Uncert Loss: 0.6151, ETA: 343s
+2024-12-03 15:31:18,066 - INFO - Epoch 12, Progress: 88.6%, Batch 100/114, Loss: 2.5543, Point Loss: 0.7054, Dist Loss: 1.2227, Uncert Loss: 0.6262, ETA: 71s
+2024-12-03 15:32:41,535 - INFO - Epoch 12 completed in 636s, Train Loss: 2.5781, Val Loss: 2.4266
+2024-12-03 15:32:41,631 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 15:32:49,744 - INFO - Epoch 13, Progress: 0.9%, Batch 0/114, Loss: 2.4994, Point Loss: 0.6929, Dist Loss: 1.1929, Uncert Loss: 0.6136, ETA: 917s
+2024-12-03 15:37:22,244 - INFO - Epoch 13, Progress: 44.7%, Batch 50/114, Loss: 2.4927, Point Loss: 0.6753, Dist Loss: 1.1862, Uncert Loss: 0.6312, ETA: 347s
+2024-12-03 15:45:53,108 - INFO - Epoch 13, Progress: 88.6%, Batch 100/114, Loss: 2.6059, Point Loss: 0.6966, Dist Loss: 1.2348, Uncert Loss: 0.6744, ETA: 102s
+2024-12-03 15:49:04,146 - INFO - Epoch 13 completed in 983s, Train Loss: 2.5308, Val Loss: 2.3676
+2024-12-03 15:49:04,505 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 15:49:56,611 - INFO - Epoch 14, Progress: 0.9%, Batch 0/114, Loss: 2.4544, Point Loss: 0.6434, Dist Loss: 1.1743, Uncert Loss: 0.6367, ETA: 5888s
+2024-12-03 15:55:59,589 - INFO - Epoch 14, Progress: 44.7%, Batch 50/114, Loss: 2.5312, Point Loss: 0.7300, Dist Loss: 1.2057, Uncert Loss: 0.5955, ETA: 513s
+2024-12-03 16:02:39,407 - INFO - Epoch 14, Progress: 88.6%, Batch 100/114, Loss: 2.5403, Point Loss: 0.7125, Dist Loss: 1.2098, Uncert Loss: 0.6180, ETA: 105s
+2024-12-03 16:04:31,250 - INFO - Epoch 14 completed in 927s, Train Loss: 2.4981, Val Loss: 2.3293
+2024-12-03 16:04:31,347 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 16:04:38,351 - INFO - Epoch 15, Progress: 0.9%, Batch 0/114, Loss: 2.6440, Point Loss: 0.7347, Dist Loss: 1.2454, Uncert Loss: 0.6639, ETA: 756s
+2024-12-03 16:44:01,260 - INFO - Epoch 15, Progress: 44.7%, Batch 50/114, Loss: 2.5464, Point Loss: 0.7208, Dist Loss: 1.2185, Uncert Loss: 0.6071, ETA: 2927s
+2024-12-03 16:47:31,485 - INFO - Epoch 15, Progress: 88.6%, Batch 100/114, Loss: 2.5813, Point Loss: 0.7215, Dist Loss: 1.1999, Uncert Loss: 0.6599, ETA: 332s
+2024-12-03 16:48:38,292 - INFO - Epoch 15 completed in 2647s, Train Loss: 2.4784, Val Loss: 2.3193
+2024-12-03 16:48:38,385 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 16:48:45,368 - INFO - Epoch 16, Progress: 0.9%, Batch 0/114, Loss: 2.3312, Point Loss: 0.5932, Dist Loss: 1.1065, Uncert Loss: 0.6316, ETA: 789s
+2024-12-03 16:52:51,902 - INFO - Epoch 16, Progress: 44.7%, Batch 50/114, Loss: 2.4100, Point Loss: 0.6386, Dist Loss: 1.1620, Uncert Loss: 0.6094, ETA: 313s
+2024-12-03 17:11:54,748 - INFO - Epoch 16, Progress: 88.6%, Batch 100/114, Loss: 2.5524, Point Loss: 0.6934, Dist Loss: 1.2174, Uncert Loss: 0.6415, ETA: 180s
+2024-12-03 17:13:19,421 - INFO - Epoch 16 completed in 1481s, Train Loss: 2.4605, Val Loss: 2.3003
+2024-12-03 17:13:19,528 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 17:13:27,763 - INFO - Epoch 17, Progress: 0.9%, Batch 0/114, Loss: 2.3875, Point Loss: 0.6154, Dist Loss: 1.1227, Uncert Loss: 0.6494, ETA: 931s
+2024-12-03 17:18:22,110 - INFO - Epoch 17, Progress: 44.7%, Batch 50/114, Loss: 2.4161, Point Loss: 0.6628, Dist Loss: 1.1524, Uncert Loss: 0.6008, ETA: 374s
+2024-12-03 17:23:15,804 - INFO - Epoch 17, Progress: 88.6%, Batch 100/114, Loss: 2.4722, Point Loss: 0.6610, Dist Loss: 1.1697, Uncert Loss: 0.6415, ETA: 77s
+2024-12-03 17:24:41,353 - INFO - Epoch 17 completed in 682s, Train Loss: 2.4471, Val Loss: 2.2926
+2024-12-03 17:24:41,464 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 17:24:50,235 - INFO - Epoch 18, Progress: 0.9%, Batch 0/114, Loss: 2.4614, Point Loss: 0.6606, Dist Loss: 1.1556, Uncert Loss: 0.6452, ETA: 991s
+2024-12-03 17:30:01,333 - INFO - Epoch 18, Progress: 44.7%, Batch 50/114, Loss: 2.3911, Point Loss: 0.6424, Dist Loss: 1.1544, Uncert Loss: 0.5943, ETA: 395s
+2024-12-03 17:35:04,511 - INFO - Epoch 18, Progress: 88.6%, Batch 100/114, Loss: 2.4508, Point Loss: 0.6541, Dist Loss: 1.1696, Uncert Loss: 0.6271, ETA: 80s
+2024-12-03 17:36:33,617 - INFO - Epoch 18 completed in 712s, Train Loss: 2.4322, Val Loss: 2.2908
+2024-12-03 17:36:33,727 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 17:36:43,067 - INFO - Epoch 19, Progress: 0.9%, Batch 0/114, Loss: 2.4274, Point Loss: 0.6225, Dist Loss: 1.1483, Uncert Loss: 0.6567, ETA: 1055s
+2024-12-03 17:41:49,956 - INFO - Epoch 19, Progress: 44.7%, Batch 50/114, Loss: 2.2259, Point Loss: 0.5455, Dist Loss: 1.0750, Uncert Loss: 0.6054, ETA: 391s
+2024-12-03 17:46:55,336 - INFO - Epoch 19, Progress: 88.6%, Batch 100/114, Loss: 2.4531, Point Loss: 0.6648, Dist Loss: 1.1698, Uncert Loss: 0.6186, ETA: 80s
+2024-12-03 17:48:24,097 - INFO - Epoch 19 completed in 710s, Train Loss: 2.4189, Val Loss: 2.2773
+2024-12-03 17:48:24,207 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 17:48:33,764 - INFO - Epoch 20, Progress: 0.9%, Batch 0/114, Loss: 2.4722, Point Loss: 0.6577, Dist Loss: 1.1684, Uncert Loss: 0.6460, ETA: 1041s
+2024-12-03 17:53:37,755 - INFO - Epoch 20, Progress: 44.7%, Batch 50/114, Loss: 2.3844, Point Loss: 0.6257, Dist Loss: 1.1258, Uncert Loss: 0.6328, ETA: 387s
+2024-12-03 17:58:33,608 - INFO - Epoch 20, Progress: 88.6%, Batch 100/114, Loss: 2.2742, Point Loss: 0.5453, Dist Loss: 1.0788, Uncert Loss: 0.6501, ETA: 78s
+2024-12-03 17:59:44,669 - INFO - Epoch 20 completed in 680s, Train Loss: 2.4064, Val Loss: 2.2568
+2024-12-03 17:59:44,768 - INFO - Saved best model checkpoint to checkpoints/synthetic/hydra_best.pt
+2024-12-03 17:59:51,709 - INFO - Epoch 21, Progress: 0.9%, Batch 0/114, Loss: 2.3378, Point Loss: 0.6315, Dist Loss: 1.1035, Uncert Loss: 0.6028, ETA: 784s
+2024-12-03 18:06:22,666 - INFO - Epoch 21, Progress: 44.7%, Batch 50/114, Loss: 2.3448, Point Loss: 0.5956, Dist Loss: 1.1157, Uncert Loss: 0.6335, ETA: 492s
+2024-12-03 18:45:31,272 - INFO - Epoch 21, Progress: 88.6%, Batch 100/114, Loss: 2.2683, Point Loss: 0.5628, Dist Loss: 1.0790, Uncert Loss: 0.6265, ETA: 354s
+2024-12-03 18:46:50,977 - INFO - Epoch 21 completed in 2826s, Train Loss: 2.3919, Val Loss: 2.2903
+2024-12-03 18:47:00,485 - INFO - Epoch 22, Progress: 0.9%, Batch 0/114, Loss: 2.4418, Point Loss: 0.6678, Dist Loss: 1.1567, Uncert Loss: 0.6173, ETA: 1074s
+2024-12-03 18:51:28,844 - INFO - Epoch 22, Progress: 44.7%, Batch 50/114, Loss: 2.3573, Point Loss: 0.6488, Dist Loss: 1.1100, Uncert Loss: 0.5984, ETA: 343s
+2024-12-03 18:56:25,360 - INFO - Epoch 22, Progress: 88.6%, Batch 100/114, Loss: 2.5303, Point Loss: 0.6885, Dist Loss: 1.1906, Uncert Loss: 0.6512, ETA: 74s
+2024-12-03 18:57:42,432 - INFO - Epoch 22 completed in 651s, Train Loss: 2.3815, Val Loss: 2.2814
+2024-12-03 18:57:50,096 - INFO - Epoch 23, Progress: 0.9%, Batch 0/114, Loss: 2.2932, Point Loss: 0.5906, Dist Loss: 1.0718, Uncert Loss: 0.6307, ETA: 866s
+2024-12-03 19:06:06,133 - INFO - Epoch 23, Progress: 44.7%, Batch 50/114, Loss: 2.2581, Point Loss: 0.5533, Dist Loss: 1.0732, Uncert Loss: 0.6316, ETA: 622s
+2024-12-03 19:43:48,629 - INFO - Epoch 23, Progress: 88.6%, Batch 100/114, Loss: 2.4018, Point Loss: 0.6388, Dist Loss: 1.1320, Uncert Loss: 0.6309, ETA: 356s
+2024-12-03 19:49:46,233 - INFO - Epoch 23 completed in 3124s, Train Loss: 2.3674, Val Loss: 2.2765
+2024-12-03 19:50:01,130 - INFO - Epoch 24, Progress: 0.9%, Batch 0/114, Loss: 2.4101, Point Loss: 0.6345, Dist Loss: 1.1436, Uncert Loss: 0.6320, ETA: 1683s
+2024-12-03 20:00:52,832 - INFO - Epoch 24, Progress: 44.7%, Batch 50/114, Loss: 2.4600, Point Loss: 0.6567, Dist Loss: 1.1542, Uncert Loss: 0.6491, ETA: 823s
+2024-12-03 20:17:46,950 - INFO - Epoch 24, Progress: 88.6%, Batch 100/114, Loss: 2.3782, Point Loss: 0.6179, Dist Loss: 1.1240, Uncert Loss: 0.6363, ETA: 216s
+2024-12-03 20:23:31,334 - INFO - Epoch 24 completed in 2025s, Train Loss: 2.3595, Val Loss: 2.2906
+2024-12-03 20:23:38,358 - INFO - Epoch 25, Progress: 0.9%, Batch 0/114, Loss: 2.3325, Point Loss: 0.6143, Dist Loss: 1.0989, Uncert Loss: 0.6193, ETA: 762s
+2024-12-03 21:05:38,600 - INFO - Epoch 25, Progress: 44.7%, Batch 50/114, Loss: 2.2706, Point Loss: 0.5844, Dist Loss: 1.0732, Uncert Loss: 0.6130, ETA: 3122s
+2024-12-03 21:13:04,412 - INFO - Epoch 25, Progress: 88.6%, Batch 100/114, Loss: 2.2953, Point Loss: 0.5854, Dist Loss: 1.0953, Uncert Loss: 0.6146, ETA: 383s
+2024-12-03 21:15:29,741 - INFO - Epoch 25 completed in 3118s, Train Loss: 2.3445, Val Loss: 2.2670
+2024-12-03 21:15:37,553 - INFO - Epoch 26, Progress: 0.9%, Batch 0/114, Loss: 2.3146, Point Loss: 0.5919, Dist Loss: 1.1130, Uncert Loss: 0.6098, ETA: 883s
+2024-12-03 21:29:56,140 - INFO - Epoch 26, Progress: 44.7%, Batch 50/114, Loss: 2.2946, Point Loss: 0.5867, Dist Loss: 1.0847, Uncert Loss: 0.6232, ETA: 1070s
+2024-12-03 21:38:02,227 - INFO - Epoch 26, Progress: 88.6%, Batch 100/114, Loss: 2.3696, Point Loss: 0.6069, Dist Loss: 1.1225, Uncert Loss: 0.6402, ETA: 174s
+2024-12-03 21:40:08,353 - INFO - Epoch 26 completed in 1479s, Train Loss: 2.3355, Val Loss: 2.3108
+2024-12-03 21:40:14,632 - INFO - Epoch 27, Progress: 0.9%, Batch 0/114, Loss: 2.2753, Point Loss: 0.5522, Dist Loss: 1.0815, Uncert Loss: 0.6415, ETA: 709s
+2024-12-03 21:58:17,545 - INFO - Epoch 27, Progress: 44.7%, Batch 50/114, Loss: 2.2436, Point Loss: 0.5761, Dist Loss: 1.0776, Uncert Loss: 0.5898, ETA: 1345s
+2024-12-03 22:19:17,349 - INFO - Epoch 27, Progress: 88.6%, Batch 100/114, Loss: 2.3006, Point Loss: 0.5927, Dist Loss: 1.0922, Uncert Loss: 0.6156, ETA: 302s
+2024-12-03 22:24:49,589 - INFO - Epoch 27 completed in 2681s, Train Loss: 2.3273, Val Loss: 2.2957
+2024-12-03 22:24:55,491 - INFO - Epoch 28, Progress: 0.9%, Batch 0/114, Loss: 2.3290, Point Loss: 0.5820, Dist Loss: 1.0957, Uncert Loss: 0.6513, ETA: 667s
+2024-12-03 22:30:50,437 - INFO - Epoch 28, Progress: 44.7%, Batch 50/114, Loss: 2.2711, Point Loss: 0.5617, Dist Loss: 1.0891, Uncert Loss: 0.6202, ETA: 446s
+2024-12-03 22:37:08,572 - INFO - Epoch 28, Progress: 88.6%, Batch 100/114, Loss: 2.3230, Point Loss: 0.5984, Dist Loss: 1.1066, Uncert Loss: 0.6180, ETA: 95s
+2024-12-03 22:39:17,466 - INFO - Epoch 28 completed in 868s, Train Loss: 2.3151, Val Loss: 2.2833
+2024-12-03 22:39:23,573 - INFO - Epoch 29, Progress: 0.9%, Batch 0/114, Loss: 2.3135, Point Loss: 0.5801, Dist Loss: 1.1048, Uncert Loss: 0.6286, ETA: 690s
+2024-12-03 22:44:41,666 - INFO - Epoch 29, Progress: 44.7%, Batch 50/114, Loss: 2.3144, Point Loss: 0.5633, Dist Loss: 1.0945, Uncert Loss: 0.6566, ETA: 400s
+2024-12-03 22:51:28,599 - INFO - Epoch 29, Progress: 88.6%, Batch 100/114, Loss: 2.3574, Point Loss: 0.6327, Dist Loss: 1.1261, Uncert Loss: 0.5986, ETA: 94s
+2024-12-03 22:53:46,206 - INFO - Epoch 29 completed in 869s, Train Loss: 2.3021, Val Loss: 2.2855
+2024-12-03 22:53:52,355 - INFO - Epoch 30, Progress: 0.9%, Batch 0/114, Loss: 2.3917, Point Loss: 0.6258, Dist Loss: 1.1307, Uncert Loss: 0.6352, ETA: 673s
+2024-12-03 23:01:03,891 - INFO - Epoch 30, Progress: 44.7%, Batch 50/114, Loss: 2.3848, Point Loss: 0.6296, Dist Loss: 1.1264, Uncert Loss: 0.6288, ETA: 540s
+2024-12-03 23:08:33,359 - INFO - Epoch 30, Progress: 88.6%, Batch 100/114, Loss: 2.4236, Point Loss: 0.6782, Dist Loss: 1.1231, Uncert Loss: 0.6223, ETA: 114s
+2024-12-03 23:10:50,853 - INFO - Epoch 30 completed in 1024s, Train Loss: 2.2901, Val Loss: 2.2927
+2024-12-03 23:10:59,258 - INFO - Epoch 31, Progress: 0.9%, Batch 0/114, Loss: 2.2895, Point Loss: 0.5983, Dist Loss: 1.0953, Uncert Loss: 0.5959, ETA: 950s
+2024-12-03 23:15:53,942 - INFO - Epoch 31, Progress: 44.7%, Batch 50/114, Loss: 2.2154, Point Loss: 0.5402, Dist Loss: 1.0498, Uncert Loss: 0.6253, ETA: 374s
+2024-12-03 23:21:00,128 - INFO - Epoch 31, Progress: 88.6%, Batch 100/114, Loss: 2.2942, Point Loss: 0.5810, Dist Loss: 1.0787, Uncert Loss: 0.6344, ETA: 78s
+2024-12-03 23:22:30,235 - INFO - Epoch 31 completed in 699s, Train Loss: 2.2784, Val Loss: 2.2800
+2024-12-03 23:22:42,482 - INFO - Epoch 32, Progress: 0.9%, Batch 0/114, Loss: 2.2893, Point Loss: 0.5884, Dist Loss: 1.0801, Uncert Loss: 0.6208, ETA: 1384s
+2024-12-03 23:27:58,100 - INFO - Epoch 32, Progress: 44.7%, Batch 50/114, Loss: 2.2758, Point Loss: 0.5747, Dist Loss: 1.0793, Uncert Loss: 0.6218, ETA: 405s
+2024-12-03 23:32:47,722 - INFO - Epoch 32, Progress: 88.6%, Batch 100/114, Loss: 2.3405, Point Loss: 0.6297, Dist Loss: 1.1013, Uncert Loss: 0.6095, ETA: 79s
+2024-12-03 23:34:12,455 - INFO - Epoch 32 completed in 702s, Train Loss: 2.2651, Val Loss: 2.2702
+2024-12-03 23:34:21,456 - INFO - Epoch 33, Progress: 0.9%, Batch 0/114, Loss: 2.2727, Point Loss: 0.5921, Dist Loss: 1.0783, Uncert Loss: 0.6023, ETA: 1017s
+2024-12-03 23:39:51,909 - INFO - Epoch 33, Progress: 44.7%, Batch 50/114, Loss: 2.3348, Point Loss: 0.6150, Dist Loss: 1.1111, Uncert Loss: 0.6087, ETA: 419s
+2024-12-03 23:44:55,575 - INFO - Epoch 33, Progress: 88.6%, Batch 100/114, Loss: 2.1341, Point Loss: 0.5436, Dist Loss: 1.0085, Uncert Loss: 0.5820, ETA: 83s
+2024-12-03 23:46:23,927 - INFO - Epoch 33 completed in 731s, Train Loss: 2.2583, Val Loss: 2.2891
+2024-12-03 23:46:33,382 - INFO - Epoch 34, Progress: 0.9%, Batch 0/114, Loss: 2.2450, Point Loss: 0.5594, Dist Loss: 1.0695, Uncert Loss: 0.6161, ETA: 1068s
+2024-12-03 23:51:31,057 - INFO - Epoch 34, Progress: 44.7%, Batch 50/114, Loss: 2.2115, Point Loss: 0.5503, Dist Loss: 1.0475, Uncert Loss: 0.6137, ETA: 379s
+2024-12-03 23:56:26,970 - INFO - Epoch 34, Progress: 88.6%, Batch 100/114, Loss: 2.2501, Point Loss: 0.5401, Dist Loss: 1.0615, Uncert Loss: 0.6484, ETA: 78s
+2024-12-03 23:57:52,839 - INFO - Epoch 34 completed in 689s, Train Loss: 2.2423, Val Loss: 2.2847
+2024-12-03 23:58:02,158 - INFO - Epoch 35, Progress: 0.9%, Batch 0/114, Loss: 2.1960, Point Loss: 0.5283, Dist Loss: 1.0370, Uncert Loss: 0.6306, ETA: 1014s
+2024-12-04 00:03:02,863 - INFO - Epoch 35, Progress: 44.7%, Batch 50/114, Loss: 2.1815, Point Loss: 0.5292, Dist Loss: 1.0440, Uncert Loss: 0.6082, ETA: 383s
+2024-12-04 00:08:02,661 - INFO - Epoch 35, Progress: 88.6%, Batch 100/114, Loss: 2.2108, Point Loss: 0.5453, Dist Loss: 1.0445, Uncert Loss: 0.6210, ETA: 78s
+2024-12-04 00:09:26,809 - INFO - Epoch 35 completed in 694s, Train Loss: 2.2323, Val Loss: 2.3180
+2024-12-04 00:09:35,785 - INFO - Epoch 36, Progress: 0.9%, Batch 0/114, Loss: 2.2211, Point Loss: 0.5465, Dist Loss: 1.0774, Uncert Loss: 0.5971, ETA: 1014s
+2024-12-04 00:14:25,457 - INFO - Epoch 36, Progress: 44.7%, Batch 50/114, Loss: 2.2188, Point Loss: 0.5113, Dist Loss: 1.0510, Uncert Loss: 0.6565, ETA: 369s
+2024-12-04 00:19:15,928 - INFO - Epoch 36, Progress: 88.6%, Batch 100/114, Loss: 2.2828, Point Loss: 0.5930, Dist Loss: 1.0785, Uncert Loss: 0.6114, ETA: 76s
+2024-12-04 00:20:42,327 - INFO - Epoch 36 completed in 676s, Train Loss: 2.2147, Val Loss: 2.2788
+2024-12-04 00:20:50,928 - INFO - Epoch 37, Progress: 0.9%, Batch 0/114, Loss: 2.1727, Point Loss: 0.5235, Dist Loss: 1.0282, Uncert Loss: 0.6211, ETA: 972s
+2024-12-04 00:25:47,210 - INFO - Epoch 37, Progress: 44.7%, Batch 50/114, Loss: 2.1450, Point Loss: 0.5002, Dist Loss: 1.0092, Uncert Loss: 0.6357, ETA: 377s
+2024-12-04 00:30:51,901 - INFO - Epoch 37, Progress: 88.6%, Batch 100/114, Loss: 2.1920, Point Loss: 0.5157, Dist Loss: 1.0528, Uncert Loss: 0.6235, ETA: 78s
+2024-12-04 00:32:19,644 - INFO - Epoch 37 completed in 697s, Train Loss: 2.2059, Val Loss: 2.2876
+2024-12-04 00:32:28,847 - INFO - Epoch 38, Progress: 0.9%, Batch 0/114, Loss: 2.2149, Point Loss: 0.5427, Dist Loss: 1.0538, Uncert Loss: 0.6183, ETA: 1040s
+2024-12-04 00:37:35,210 - INFO - Epoch 38, Progress: 44.7%, Batch 50/114, Loss: 2.0755, Point Loss: 0.5120, Dist Loss: 0.9709, Uncert Loss: 0.5927, ETA: 390s
+2024-12-04 00:42:40,380 - INFO - Epoch 38, Progress: 88.6%, Batch 100/114, Loss: 2.1633, Point Loss: 0.5238, Dist Loss: 1.0253, Uncert Loss: 0.6142, ETA: 80s
+2024-12-04 00:44:08,924 - INFO - Epoch 38 completed in 709s, Train Loss: 2.1941, Val Loss: 2.2808
+2024-12-04 00:44:18,124 - INFO - Epoch 39, Progress: 0.9%, Batch 0/114, Loss: 2.1381, Point Loss: 0.4978, Dist Loss: 1.0124, Uncert Loss: 0.6279, ETA: 1039s
+2024-12-04 00:49:24,655 - INFO - Epoch 39, Progress: 44.7%, Batch 50/114, Loss: 2.2617, Point Loss: 0.5467, Dist Loss: 1.0802, Uncert Loss: 0.6348, ETA: 390s
+2024-12-04 00:54:32,345 - INFO - Epoch 39, Progress: 88.6%, Batch 100/114, Loss: 2.1034, Point Loss: 0.4898, Dist Loss: 1.0165, Uncert Loss: 0.5971, ETA: 80s
+2024-12-04 00:56:00,845 - INFO - Epoch 39 completed in 712s, Train Loss: 2.1798, Val Loss: 2.3280
+2024-12-04 00:56:10,532 - INFO - Epoch 40, Progress: 0.9%, Batch 0/114, Loss: 2.2297, Point Loss: 0.5380, Dist Loss: 1.0600, Uncert Loss: 0.6317, ETA: 1057s
+2024-12-04 01:01:20,367 - INFO - Epoch 40, Progress: 44.7%, Batch 50/114, Loss: 2.1498, Point Loss: 0.5391, Dist Loss: 1.0139, Uncert Loss: 0.5968, ETA: 394s
+2024-12-04 01:06:33,094 - INFO - Epoch 40, Progress: 88.6%, Batch 100/114, Loss: 2.1479, Point Loss: 0.4987, Dist Loss: 1.0049, Uncert Loss: 0.6442, ETA: 81s
+2024-12-04 01:08:07,271 - INFO - Epoch 40 completed in 726s, Train Loss: 2.1711, Val Loss: 2.3254
+2024-12-04 01:08:19,391 - INFO - Epoch 41, Progress: 0.9%, Batch 0/114, Loss: 2.0484, Point Loss: 0.4631, Dist Loss: 0.9700, Uncert Loss: 0.6154, ETA: 1369s
+2024-12-04 01:12:30,211 - INFO - Epoch 41, Progress: 44.7%, Batch 50/114, Loss: 2.2620, Point Loss: 0.5722, Dist Loss: 1.0632, Uncert Loss: 0.6266, ETA: 325s
+2024-12-04 01:16:20,265 - INFO - Epoch 41, Progress: 88.6%, Batch 100/114, Loss: 2.0781, Point Loss: 0.5283, Dist Loss: 0.9745, Uncert Loss: 0.5752, ETA: 63s
+2024-12-04 01:17:29,289 - INFO - Epoch 41 completed in 562s, Train Loss: 2.1542, Val Loss: 2.3130
+2024-12-04 01:17:36,415 - INFO - Epoch 42, Progress: 0.9%, Batch 0/114, Loss: 2.1024, Point Loss: 0.5148, Dist Loss: 1.0009, Uncert Loss: 0.5867, ETA: 805s
+2024-12-04 01:21:39,026 - INFO - Epoch 42, Progress: 44.7%, Batch 50/114, Loss: 2.0115, Point Loss: 0.4688, Dist Loss: 0.9352, Uncert Loss: 0.6074, ETA: 308s
+2024-12-04 01:25:43,409 - INFO - Epoch 42, Progress: 88.6%, Batch 100/114, Loss: 2.1407, Point Loss: 0.5131, Dist Loss: 1.0045, Uncert Loss: 0.6230, ETA: 64s
+2024-12-04 01:26:53,509 - INFO - Epoch 42 completed in 564s, Train Loss: 2.1447, Val Loss: 2.2946
+2024-12-04 01:27:02,379 - INFO - Epoch 43, Progress: 0.9%, Batch 0/114, Loss: 2.0391, Point Loss: 0.4895, Dist Loss: 0.9583, Uncert Loss: 0.5913, ETA: 1002s
+2024-12-04 01:31:18,452 - INFO - Epoch 43, Progress: 44.7%, Batch 50/114, Loss: 2.1357, Point Loss: 0.5202, Dist Loss: 1.0076, Uncert Loss: 0.6078, ETA: 327s
+2024-12-04 01:35:34,767 - INFO - Epoch 43, Progress: 88.6%, Batch 100/114, Loss: 2.1059, Point Loss: 0.4883, Dist Loss: 1.0336, Uncert Loss: 0.5839, ETA: 67s
+2024-12-04 01:36:49,901 - INFO - Epoch 43 completed in 596s, Train Loss: 2.1285, Val Loss: 2.3383
+2024-12-04 01:36:57,207 - INFO - Epoch 44, Progress: 0.9%, Batch 0/114, Loss: 2.0952, Point Loss: 0.4996, Dist Loss: 0.9914, Uncert Loss: 0.6042, ETA: 825s
+2024-12-04 01:41:10,920 - INFO - Epoch 44, Progress: 44.7%, Batch 50/114, Loss: 2.1637, Point Loss: 0.5263, Dist Loss: 1.0152, Uncert Loss: 0.6222, ETA: 322s
+2024-12-04 01:45:18,695 - INFO - Epoch 44, Progress: 88.6%, Batch 100/114, Loss: 2.1300, Point Loss: 0.5316, Dist Loss: 1.0045, Uncert Loss: 0.5939, ETA: 65s
+2024-12-04 01:46:30,569 - INFO - Epoch 44 completed in 581s, Train Loss: 2.1172, Val Loss: 2.3519
+2024-12-04 01:46:38,583 - INFO - Epoch 45, Progress: 0.9%, Batch 0/114, Loss: 2.1561, Point Loss: 0.4958, Dist Loss: 1.0193, Uncert Loss: 0.6410, ETA: 867s
+2024-12-04 01:50:57,876 - INFO - Epoch 45, Progress: 44.7%, Batch 50/114, Loss: 2.0684, Point Loss: 0.4934, Dist Loss: 0.9799, Uncert Loss: 0.5951, ETA: 330s
+2024-12-04 01:55:18,168 - INFO - Epoch 45, Progress: 88.6%, Batch 100/114, Loss: 2.0622, Point Loss: 0.5217, Dist Loss: 0.9612, Uncert Loss: 0.5792, ETA: 68s
+2024-12-04 01:56:34,753 - INFO - Epoch 45 completed in 604s, Train Loss: 2.1011, Val Loss: 2.3394
+2024-12-04 01:56:42,320 - INFO - Epoch 46, Progress: 0.9%, Batch 0/114, Loss: 2.1894, Point Loss: 0.4984, Dist Loss: 1.0428, Uncert Loss: 0.6482, ETA: 855s
+2024-12-04 02:01:00,684 - INFO - Epoch 46, Progress: 44.7%, Batch 50/114, Loss: 2.2472, Point Loss: 0.5521, Dist Loss: 1.0633, Uncert Loss: 0.6318, ETA: 328s
+2024-12-04 02:05:10,708 - INFO - Epoch 46, Progress: 88.6%, Batch 100/114, Loss: 2.0981, Point Loss: 0.5394, Dist Loss: 0.9813, Uncert Loss: 0.5774, ETA: 66s
+2024-12-04 02:06:24,182 - INFO - Epoch 46 completed in 589s, Train Loss: 2.0884, Val Loss: 2.3527
+2024-12-04 02:06:31,579 - INFO - Epoch 47, Progress: 0.9%, Batch 0/114, Loss: 2.0720, Point Loss: 0.4824, Dist Loss: 0.9766, Uncert Loss: 0.6130, ETA: 836s
+2024-12-04 02:10:49,103 - INFO - Epoch 47, Progress: 44.7%, Batch 50/114, Loss: 2.1628, Point Loss: 0.5038, Dist Loss: 1.0190, Uncert Loss: 0.6400, ETA: 327s
+2024-12-04 02:15:08,901 - INFO - Epoch 47, Progress: 88.6%, Batch 100/114, Loss: 2.1124, Point Loss: 0.5188, Dist Loss: 0.9880, Uncert Loss: 0.6057, ETA: 68s
+2024-12-04 02:16:23,535 - INFO - Epoch 47 completed in 599s, Train Loss: 2.0691, Val Loss: 2.3630
+2024-12-04 02:16:31,137 - INFO - Epoch 48, Progress: 0.9%, Batch 0/114, Loss: 2.0730, Point Loss: 0.4743, Dist Loss: 0.9665, Uncert Loss: 0.6321, ETA: 859s
+2024-12-04 02:20:56,422 - INFO - Epoch 48, Progress: 44.7%, Batch 50/114, Loss: 2.0629, Point Loss: 0.4752, Dist Loss: 0.9703, Uncert Loss: 0.6174, ETA: 337s
+2024-12-04 02:25:17,314 - INFO - Epoch 48, Progress: 88.6%, Batch 100/114, Loss: 2.0984, Point Loss: 0.4847, Dist Loss: 0.9802, Uncert Loss: 0.6336, ETA: 69s
+2024-12-04 02:26:32,538 - INFO - Epoch 48 completed in 609s, Train Loss: 2.0574, Val Loss: 2.3856
+2024-12-04 02:26:40,280 - INFO - Epoch 49, Progress: 0.9%, Batch 0/114, Loss: 2.0398, Point Loss: 0.4752, Dist Loss: 0.9594, Uncert Loss: 0.6052, ETA: 875s
+2024-12-04 02:30:48,982 - INFO - Epoch 49, Progress: 44.7%, Batch 50/114, Loss: 2.1252, Point Loss: 0.5016, Dist Loss: 1.0007, Uncert Loss: 0.6229, ETA: 317s
+2024-12-04 02:34:58,221 - INFO - Epoch 49, Progress: 88.6%, Batch 100/114, Loss: 1.9854, Point Loss: 0.4366, Dist Loss: 0.9286, Uncert Loss: 0.6201, ETA: 65s
+2024-12-04 02:36:14,746 - INFO - Epoch 49 completed in 582s, Train Loss: 2.0445, Val Loss: 2.3917
+2024-12-04 02:36:15,098 - INFO - Generating forecast plots...

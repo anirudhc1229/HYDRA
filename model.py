@@ -10,10 +10,11 @@ from torch.distributions import (
 )
 
 class TransformerEncoder(nn.Module):
-    def __init__(self, input_dim, d_model=512, nhead=8, num_layers=8, 
-                 dim_feedforward=2048, dropout=0.1):
+    def __init__(self, input_dim, d_model=128, nhead=4, num_layers=2, 
+                 dim_feedforward=512, dropout=0.2):
         super().__init__()
         self.embedding = nn.Linear(input_dim, d_model)
+        self.batch_norm = nn.BatchNorm1d(d_model)
         self.dropout = nn.Dropout(dropout)
         encoder_layer = nn.TransformerEncoderLayer(
             d_model=d_model,
@@ -29,15 +30,16 @@ class TransformerEncoder(nn.Module):
 
     def forward(self, x, mask=None):
         x = self.dropout(self.embedding(x))
+        x = self.batch_norm(x.transpose(1, 2)).transpose(1, 2)
         return self.transformer(x, mask=mask)
 
 class ARDecoder(nn.Module):
-    def __init__(self, d_model=512, nhead=8, num_layers=4, dropout=0.1):
+    def __init__(self, d_model=128, nhead=4, num_layers=1, dropout=0.2):
         super().__init__()
         decoder_layer = nn.TransformerDecoderLayer(
             d_model=d_model,
             nhead=nhead,
-            dim_feedforward=d_model * 4,
+            dim_feedforward=d_model * 2,
             dropout=dropout,
             batch_first=True
         )
@@ -46,18 +48,20 @@ class ARDecoder(nn.Module):
             num_layers=num_layers
         )
         self.dropout = nn.Dropout(dropout)
+        self.layer_norm = nn.LayerNorm(d_model)
 
     def forward(self, tgt, memory, tgt_mask=None):
         tgt = self.dropout(tgt)
-        return self.decoder(tgt, memory, tgt_mask=tgt_mask)
+        output = self.decoder(tgt, memory, tgt_mask=tgt_mask)
+        return self.layer_norm(output)
 
 class NARDecoder(nn.Module):
-    def __init__(self, d_model=512, nhead=8, num_layers=4, dropout=0.1):
+    def __init__(self, d_model=128, nhead=4, num_layers=1, dropout=0.2):
         super().__init__()
         decoder_layer = nn.TransformerDecoderLayer(
             d_model=d_model,
             nhead=nhead,
-            dim_feedforward=d_model * 4,
+            dim_feedforward=d_model * 2,
             dropout=dropout,
             batch_first=True
         )
@@ -66,77 +70,87 @@ class NARDecoder(nn.Module):
             num_layers=num_layers
         )
         self.dropout = nn.Dropout(dropout)
+        self.layer_norm = nn.LayerNorm(d_model)
 
     def forward(self, tgt, memory):
         tgt = self.dropout(tgt)
-        return self.decoder(tgt, memory)
+        output = self.decoder(tgt, memory)
+        return self.layer_norm(output)
 
 class AdaptiveDistributionModule(nn.Module):
-    def __init__(self, d_model, num_components=3):
+    def __init__(self, d_model, num_features, num_components=2, dropout=0.2):
         super().__init__()
         self.num_components = num_components
+        self.num_features = num_features
         
-        # Keep separate networks for better distribution modeling
-        self.projection = nn.Linear(d_model * 2, d_model)
-        self.weight_net = nn.Linear(d_model, num_components)
-        self.loc_net = nn.Linear(d_model, num_components)
-        self.scale_net = nn.Linear(d_model, num_components)
-        self.df_net = nn.Linear(d_model, num_components)
+        self.projection = nn.Sequential(
+            nn.Linear(d_model * 2, d_model),
+            nn.ReLU(),
+            nn.Dropout(dropout)
+        )
         
-        # Optimize latent variable generation
-        self.z_net = nn.Linear(d_model, d_model * 2)
+        # Separate networks for each parameter type
+        self.weight_net = nn.Sequential(
+            nn.Linear(d_model, num_features * num_components),
+            nn.Dropout(dropout)
+        )
         
+        self.loc_net = nn.Sequential(
+            nn.Linear(d_model, num_features * num_components),
+            nn.Dropout(dropout)
+        )
+        
+        self.scale_net = nn.Sequential(
+            nn.Linear(d_model, num_features * num_components),
+            nn.Dropout(dropout)
+        )
+        
+        self.df_net = nn.Sequential(
+            nn.Linear(d_model, num_features * num_components),
+            nn.Dropout(dropout)
+        )
+        
+        self.z_net = nn.Sequential(
+            nn.Linear(d_model, d_model * 2),
+            nn.Dropout(dropout)
+        )
+
     def forward(self, h_t):
+        batch_size, seq_len, _ = h_t.shape
         h_t = self.projection(h_t)
         
-        # Compute parameters in parallel but keep separate networks
-        weights = F.softmax(self.weight_net(h_t), dim=-1)
-        locs = self.loc_net(h_t)
-        scales = F.softplus(self.scale_net(h_t))
-        dfs = F.softplus(self.df_net(h_t)) + 2
+        # Reshape all outputs correctly
+        weights = self.weight_net(h_t)
+        weights = weights.view(batch_size, seq_len, self.num_features, self.num_components)
+        weights = F.softmax(weights, dim=-1)
         
-        # Efficient latent variable generation
+        locs = self.loc_net(h_t)
+        locs = locs.view(batch_size, seq_len, self.num_features, self.num_components)
+        
+        scales = self.scale_net(h_t)
+        scales = scales.view(batch_size, seq_len, self.num_features, self.num_components)
+        scales = F.softplus(scales) + 1e-6
+        
+        dfs = self.df_net(h_t)
+        dfs = dfs.view(batch_size, seq_len, self.num_features, self.num_components)
+        dfs = F.softplus(dfs) + 2
+        
         z_params = self.z_net(h_t)
         z_mu, z_sigma = torch.chunk(z_params, 2, dim=-1)
-        z_sigma = F.softplus(z_sigma)
+        z_sigma = F.softplus(z_sigma) + 1e-6
         z = z_mu + z_sigma * torch.randn_like(z_mu)
         
-        return weights, locs, scales, dfs, z
-    
-class AdaptiveDistributionModule(nn.Module):
-    def __init__(self, d_model, num_components=3, dropout=0.1):
-        super().__init__()
-        self.num_components = num_components
-        self.dropout = nn.Dropout(dropout)
-
-        self.projection = nn.Linear(d_model * 2, d_model)
-        self.weight_net = nn.Linear(d_model, num_components)
-        self.loc_net = nn.Linear(d_model, num_components)
-        self.scale_net = nn.Linear(d_model, num_components)
-        self.df_net = nn.Linear(d_model, num_components)
-        self.z_net = nn.Linear(d_model, d_model * 2)
-
-    def forward(self, h_t):
-        h_t = self.dropout(self.projection(h_t))
-
-        weights = F.softmax(self.weight_net(h_t), dim=-1)
-        locs = self.loc_net(h_t)
-        scales = F.softplus(self.scale_net(h_t))
-        dfs = F.softplus(self.df_net(h_t)) + 2
-
-        z_params = self.z_net(h_t)
-        z_mu, z_sigma = torch.chunk(z_params, 2, dim=-1)
-        z_sigma = F.softplus(z_sigma)
-        z = z_mu + z_sigma * torch.randn_like(z_mu)
-
         return weights, locs, scales, dfs, z
 
 class HYDRA(nn.Module):
-    def __init__(self, input_dim, output_dim, d_model=512, nhead=8,
-                 num_encoder_layers=8, num_decoder_layers=4, 
-                 num_dist_components=3, dropout=0.1):
+    def __init__(self, input_dim, output_dim, d_model=128, nhead=4,
+                 num_encoder_layers=2, num_decoder_layers=1, 
+                 num_dist_components=2, dropout=0.2):
         super().__init__()
-
+        
+        self.input_dropout = nn.Dropout(dropout)
+        self.feature_dropout = nn.Dropout2d(dropout/2)
+        
         self.encoder = TransformerEncoder(
             input_dim=input_dim,
             d_model=d_model,
@@ -161,39 +175,58 @@ class HYDRA(nn.Module):
 
         self.dist_module = AdaptiveDistributionModule(
             d_model=d_model,
+            num_features=output_dim,
             num_components=num_dist_components,
             dropout=dropout
         )
 
-        self.alpha_net = nn.Linear(d_model * 3, 1)
+        self.alpha_net = nn.Sequential(
+            nn.Linear(d_model * 3, d_model),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(d_model, 1),
+            nn.Sigmoid()
+        )
+        
         self.output_projection = nn.Linear(d_model, output_dim)
         self.target_embedding = nn.Linear(input_dim, d_model)
-        self.dropout = nn.Dropout(dropout)
+        self.embedding_dropout = nn.Dropout(dropout)
+        self.output_dropout = nn.Dropout(dropout)
 
     def forward(self, x, target_len):
         device = x.device
+        batch_size = x.size(0)
+        
+        # Apply input dropouts
+        x = self.input_dropout(x)
+        x = self.feature_dropout(x.unsqueeze(-1)).squeeze(-1)
+        
+        # Generate masks
         src_mask = None
         tgt_mask = self.generate_square_subsequent_mask(target_len).to(device)
 
+        # Encode input sequence
         memory = self.encoder(x, src_mask)
 
-        batch_size = x.size(0)
+        # Prepare target sequence
         tgt = torch.zeros(batch_size, target_len, x.size(-1)).to(device)
-        tgt = self.dropout(self.target_embedding(tgt))
+        tgt = self.embedding_dropout(self.target_embedding(tgt))
 
+        # Decode
         h_ar = self.ar_decoder(tgt, memory, tgt_mask)
         h_nar = self.nar_decoder(tgt, memory)
 
+        # Generate distribution parameters
         weights, locs, scales, dfs, z = self.dist_module(
             torch.cat([h_ar, h_nar], dim=-1)
         )
 
-        alpha = torch.sigmoid(self.alpha_net(
-            torch.cat([h_ar, h_nar, z], dim=-1)
-        ))
+        # Compute attention weights
+        alpha = self.alpha_net(torch.cat([h_ar, h_nar, z], dim=-1))
 
+        # Final prediction
         blended = alpha * h_ar + (1 - alpha) * h_nar
-        output = self.output_projection(self.dropout(blended))
+        output = self.output_projection(self.output_dropout(blended))
 
         return {
             'prediction': output,
@@ -210,45 +243,32 @@ class HYDRA(nn.Module):
         mask = mask.float().masked_fill(mask == 0, float('-inf'))
         return mask
     
-    def compute_loss(self, pred_dict, target, lambda1=1.0, lambda2=1.0, lambda3=1.0):
-        # Point forecasting loss
-        point_loss = F.mse_loss(pred_dict['prediction'], target)
-        
-        # Reshape tensors for distribution loss
+    def compute_loss(self, pred_dict, target, lambda1=0.4, lambda2=0.4, lambda3=0.2):
         batch_size, seq_len, num_features = target.shape
         
-        # Reshape the parameters to handle multiple features
-        weights = pred_dict['weights'].view(batch_size, seq_len, num_features, -1)
-        locs = pred_dict['locs'].view(batch_size, seq_len, num_features, -1)
-        scales = pred_dict['scales'].view(batch_size, seq_len, num_features, -1)
-        dfs = pred_dict['dfs'].view(batch_size, seq_len, num_features, -1)
+        # Point forecasting loss with feature-wise weighting
+        point_loss = F.mse_loss(pred_dict['prediction'], target)
         
-        # Initialize distribution loss
+        # Distribution loss
         dist_loss = 0.0
-        
-        # Compute distribution loss for each feature
         for i in range(num_features):
-            mix = Categorical(weights[..., i, :])
+            mix = Categorical(pred_dict['weights'][..., i, :])
             comp = StudentT(
-                dfs[..., i, :],
-                locs[..., i, :],
-                scales[..., i, :]
+                pred_dict['dfs'][..., i, :],
+                pred_dict['locs'][..., i, :],
+                pred_dict['scales'][..., i, :]
             )
             gmm = MixtureSameFamily(mix, comp)
             dist_loss -= gmm.log_prob(target[..., i]).mean()
         
-        # Average the distribution loss over features
         dist_loss = dist_loss / num_features
         
-        # Uncertainty loss (using alpha values)
-        # Note: This is a simplified version - you'll need to define ar_better based on your specific criteria
-        ar_better = (
-            F.mse_loss(pred_dict['prediction'], target, reduction='none').mean(dim=-1) < 
-            torch.mean(F.mse_loss(pred_dict['prediction'], target, reduction='none').mean(dim=-1))
-        ).float()
+        # Uncertainty loss
+        pred_errors = F.mse_loss(pred_dict['prediction'], target, reduction='none')
+        ar_better = (pred_errors.mean(dim=-1) < pred_errors.mean()).float()
         uncert_loss = F.binary_cross_entropy(pred_dict['alpha'].squeeze(-1), ar_better)
         
-        # Combined loss
+        # Combined loss with regularization
         total_loss = (
             lambda1 * point_loss + 
             lambda2 * dist_loss + 
