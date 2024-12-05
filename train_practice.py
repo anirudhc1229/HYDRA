@@ -9,16 +9,11 @@ import logging
 from pathlib import Path
 import math
 import time
-
 from model import HYDRA
-
 from torch.distributions import (
-    Normal, 
-    StudentT, 
-    LogNormal, 
-    MixtureSameFamily, 
-    Categorical
+    Normal, StudentT, LogNormal, MixtureSameFamily, Categorical
 )
+import matplotlib.pyplot as plt
 
 def generate_synthetic_data(
     num_series=100,
@@ -27,90 +22,79 @@ def generate_synthetic_data(
     freq_range=(1, 10),
     noise_level=0.1
 ):
-    """
-    Generate synthetic time series with trends, seasonality, and noise
-    """
+    """Generate synthetic time series with complex patterns"""
     time = np.arange(seq_length)
     data = []
     
     for _ in range(num_series):
-        # Generate multiple seasonal components
         series = np.zeros((seq_length, num_features))
-        
         for feature in range(num_features):
-            # Add trend
-            trend = 0.001 * time * np.random.uniform(-1, 1)
+            # Add non-linear trend
+            trend = 0.001 * (time ** 1.5) * np.random.uniform(-1, 1)
             
-            # Add seasonal patterns
-            num_patterns = np.random.randint(1, 4)
+            # Add multiple seasonal patterns
             seasonal = np.zeros_like(time, dtype=float)
-            
+            num_patterns = np.random.randint(1, 4)
             for _ in range(num_patterns):
                 freq = np.random.uniform(*freq_range)
                 phase = np.random.uniform(0, 2 * np.pi)
                 amplitude = np.random.uniform(0.5, 2.0)
                 seasonal += amplitude * np.sin(2 * np.pi * freq * time / seq_length + phase)
             
-            # Add noise
-            noise = np.random.normal(0, noise_level, seq_length)
+            # Add regime changes
+            num_regimes = np.random.randint(2, 4)
+            regime_points = np.sort(np.random.choice(seq_length, num_regimes - 1))
+            regime_values = np.random.uniform(-1, 1, num_regimes)
+            regime_component = np.zeros_like(time, dtype=float)
+            current_regime = 0
+            for t in range(seq_length):
+                if current_regime < len(regime_points) and t >= regime_points[current_regime]:
+                    current_regime += 1
+                regime_component[t] = regime_values[current_regime]
+            
+            # Add heavy-tailed noise
+            degrees_freedom = np.random.uniform(3, 7)
+            noise = np.random.standard_t(degrees_freedom, seq_length) * noise_level
             
             # Combine components
-            series[:, feature] = trend + seasonal + noise
-        
+            series[:, feature] = trend + seasonal + regime_component + noise
         data.append(series)
     
-    # Stack all series
-    data = np.stack(data, axis=0)
-    
-    return data
+    return np.stack(data, axis=0)
 
 class TimeSeriesDataset(Dataset):
     def __init__(self, data, seq_length, pred_length, stride=1, normalize=True):
         self.seq_length = seq_length
         self.pred_length = pred_length
         self.stride = stride
-        
-        # Calculate statistics for normalization
+
         if normalize:
-            # Calculate mean and std across all timesteps for each feature
             self.means = np.mean(data, axis=(0, 1))
             self.stds = np.std(data, axis=(0, 1))
-            # Avoid division by zero
-            self.stds = np.where(self.stds == 0, 1.0, self.stds)
-            # Normalize the data
+            self.stds = np.where(self.stds < 1e-6, 1.0, self.stds)
             normalized_data = (data - self.means[None, None, :]) / self.stds[None, None, :]
             self.data = torch.FloatTensor(normalized_data)
         else:
             self.data = torch.FloatTensor(data)
             self.means = None
             self.stds = None
-        
+
     def __len__(self):
         return (len(self.data) * ((self.data.shape[1] - self.seq_length - self.pred_length + 1) // self.stride))
-        
+
     def __getitem__(self, idx):
-        # Convert idx to series_idx and start_idx
         series_idx = idx // ((self.data.shape[1] - self.seq_length - self.pred_length + 1) // self.stride)
         start_idx = (idx % ((self.data.shape[1] - self.seq_length - self.pred_length + 1) // self.stride)) * self.stride
-        
         x = self.data[series_idx, start_idx:start_idx + self.seq_length]
         y = self.data[series_idx, start_idx + self.seq_length:start_idx + self.seq_length + self.pred_length]
         return x, y
-    
+
     def inverse_transform(self, normalized_data):
-        """
-        Convert normalized data back to original scale
-        """
         if self.means is None or self.stds is None:
             return normalized_data
-        
         if isinstance(normalized_data, torch.Tensor):
             normalized_data = normalized_data.cpu().numpy()
-            
         return (normalized_data * self.stds[None, None, :]) + self.means[None, None, :]
-    
-import matplotlib.pyplot as plt
-import numpy as np
 
 def plot_sample_forecasts(model, test_loader, test_dataset, num_samples=3, save_dir='results'):
     """
@@ -228,46 +212,56 @@ def plot_training_history(train_losses, val_losses, save_dir='results'):
     plt.close()
 
 def main():
-    # Set up logging
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler('hydra_synthetic_training2.log'),
+            logging.FileHandler('hydra_training.log'),
             logging.StreamHandler()
         ]
     )
     logger = logging.getLogger(__name__)
-    
-    # Set random seeds
+
     torch.manual_seed(42)
     np.random.seed(42)
-    
-    # Configuration
+
     config = {
-        'num_series': 100,
+        # 'num_series': 1000,  # Increased dataset size
+        # 'seq_length': 96,
+        # 'pred_length': 24,
+        # 'num_features': 3,
+        # 'batch_size': 256,  # Increased batch size
+        # 'd_model': 512,  # Increased model capacity
+        # 'nhead': 8,
+        # 'num_encoder_layers': 8,
+        # 'num_decoder_layers': 8,
+        # 'num_dist_components': 3,  # Increased number of mixture components
+        # 'learning_rate': 1e-4,  # Reduced learning rate
+        # 'warmup_steps': 5000,  # Increased warmup steps
+        # 'num_epochs': 100,  # Increased training epochs
+        # 'stride': 4,
+        # 'device': 'cuda' if torch.cuda.is_available() else 'cpu'
+        'num_series': 100,  # Increased dataset size
         'seq_length': 96,
         'pred_length': 24,
         'num_features': 3,
-        'batch_size': 128,
-        'd_model': 128,
-        'nhead': 2,
-        'num_encoder_layers': 2,
-        'num_decoder_layers': 1,
-        'num_dist_components': 2,
-        'learning_rate': 1e-3,
-        'warmup_steps': 1000,
-        'num_epochs': 50,
-        'stride': 4,  # Add stride parameter to reduce dataset size
+        'batch_size': 32,  # Increased batch size
+        'd_model': 128,  # Increased model capacity
+        'nhead': 4,
+        'num_encoder_layers': 4,
+        'num_decoder_layers': 4,
+        'num_dist_components': 3,  # Increased number of mixture components
+        'learning_rate': 1e-4,  # Reduced learning rate
+        'warmup_steps': 1000,  # Increased warmup steps
+        'num_epochs': 50,  # Increased training epochs
+        'stride': 4,
         'device': 'cuda' if torch.cuda.is_available() else 'cpu'
     }
-    
-    logger.info("Generating synthetic data...")
 
-    # Generate synthetic data
+    logger.info("Generating synthetic data...")
     data = generate_synthetic_data(
         num_series=config['num_series'],
-        seq_length=1000,  # Longer sequence for splitting
+        seq_length=1000,
         num_features=config['num_features']
     )
     
@@ -402,21 +396,16 @@ def main():
         
         logger.info("Predictions saved to results/synthetic_predictions.npy")
 
-def train_hydra(
-    model,
-    train_loader,
-    val_loader,
-    num_epochs=100,
-    learning_rate=1e-4,
-    warmup_steps=5000,
-    device='cuda',
-    checkpoint_dir='checkpoints'
-):
+def train_hydra(model, train_loader, val_loader, num_epochs=100, learning_rate=1e-4, 
+                warmup_steps=5000, device='cuda', checkpoint_dir='checkpoints'):
     optimizer = AdamW(
         model.parameters(),
         lr=learning_rate,
-        weight_decay=0.01
+        weight_decay=0.01,
+        betas=(0.9, 0.999),
+        eps=1e-8
     )
+    
     scheduler = LinearLR(
         optimizer,
         start_factor=0.1,
@@ -602,7 +591,6 @@ def compute_crps(samples, target):
     
     # Compute CRPS
     crps = ((positions - heaviside) ** 2).mean(dim=0)
-    return crps
     return crps
 
 if __name__ == "__main__":
